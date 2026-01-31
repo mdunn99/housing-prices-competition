@@ -34,7 +34,7 @@ X = train_data.loc[:, train_data.columns != 'SalePrice']
 y = train_data.SalePrice
 
 # determine ideal number of leaf nodes
-candidate_leaf_nodes = [5,10,25,50,100,200,500]
+candidate_leaf_nodes = [5,10,25,50,100,200,500,700,1000]
 candidate_leaf_nodes_mae_index = [] # instatiate index
 print("Determining ideal number of leaf nodes...")
 for n in tqdm(candidate_leaf_nodes):
@@ -57,7 +57,7 @@ feature_importance_df = pd.DataFrame({
     'importance': importances
 }).sort_values('importance', ascending=False)
 
-# select top 20 features
+# select top 80 features
 ideal_features = feature_importance_df.head(80)['feature'].values
 X = train_data[ideal_features]
 
